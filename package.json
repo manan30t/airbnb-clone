@@ -1,0 +1,1 @@
+{"name":"airbnb-clone","private":true,"scripts":{"dev":"concurrently -n client,server \"npm run client\" \"npm run server\"","client":"npm --prefix client run dev","server":"npm --prefix server run dev","postinstall":"npm --prefix client install && npm --prefix server install"},"devDependencies":{"concurrently":"^9.0.0"}}

@@ -1,0 +1,14 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import listingRoutes from './routes/listing.js';
+dotenv.config();
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
+app.use('/api/listing', listingRoutes);
+const port = process.env.PORT || 5000;
+if (process.env.MONGO_URI) mongoose.connect(process.env.MONGO_URI).catch((e) => console.error('Mongo:', e.message));
+app.listen(port, () => console.log(`API on :${port}`));
